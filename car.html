@@ -23,14 +23,30 @@
 
     <input type="button" onclick="orderCar()" value="Order a car">
   </form></br>
-  
 
+  <form>
+    <div>
+        <label for="property">Enter a property</label>
+        <input type ="text" id="property" value="color">
+    </div>
+    
+    <div>
+        <label for="propertyVal">Enter a value</label>
+        <input type ="text" id="propertyVal"/>
+    </div><br>
+
+    <div>
+        <input type="button" id="updateCarBtn" onclick="updateCar()" value="Update the car"/>
+    </div>
+</form>
+  
 <p id="result"></p>
 
 <script> 
 
 let my_car={};
-function orderCar() {
+function orderCar() 
+{
 my_car = {};
 
 console.log("Getting input")
@@ -44,7 +60,18 @@ document.getElementById("result").innerHTML = my_car;
 my_car = JSON.parse(my_car);
 
 }
+
+function updateCar(){
+let property = document.getElementById("property").value;
+let propertyVal = document.getElementById("propertyVal").value;
+my_car[property]=propertyVal;
+my_car = JSON.stringify(my_car);
+document.getElementById("result").innerHTML = my_car;
+my_car = JSON.parse(my_car);
+
+}
+
 </script>
 
 </body>
-</html> 
+</html>
