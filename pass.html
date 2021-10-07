@@ -9,41 +9,67 @@
 <h2>Pass phrase by Vishal Reddy Dubbaka</h2>
 
 <h2>Getting input</h2>
-<form id="phraseCheckForm">
-    <div style="margin:10px;">
-    <label for="secret_phrase">Enter the secret phrase</label>
-    <input type ="password" id="secret_phrase" name="secret_phrase" value="Let me in">
-</div>
-<div style="margin:10px;">
-    <label for="phrase">Enter a phrase</label>
-    <input type ="text" id="phrase" name="phrase"/>
-</div>
-<div style="margin:10px;">
-    <input type="button" id="btnProcessPhrase" onclick="processPhrase()" value="Check the phrase"/>
-</div>
+<form class="form-group">
+    <label for="form1_secret_word">Enter the secret Phrase </label>
+    <input type="password" id="form1_secret_word" name="form1_secret_word" min=10 max=50 step=2 value="Secret">
+     <br>
+<br>
+
+    <label for="form1_guess_word">Enter a Phrase</label>
+    <input type="text" id="form1_guess_word" name="form1_guess_word" autofocus> 
+    <br>
+    <br>
+
+    <input type="button" onclick=" processPhrase()" value="Check the Phrase">
+    <br>
+
 </form>
 
 
-<p id="result" style="margin:10px;"></p>
+<p id="result">Your Phrase count will be shown here. </p>
 
 <div class="container">
-    <img id="picture" width="200" height="200" src="kangaroo.PNG" alt="The image of the kangaroo" onclick="newImage()">
+    <img id="animals" src="kangaroo.PNG" class="img-fluid" alt="kangaroo" onclick="newImage(this)"
+        height="200" width="200">
 </div>
-<script> 
- correct = 0;
- wrong = 0;
-function processPhrase (){
-    console.log("Getting form values")
-    var secretPhrase = document.getElementById("secret_phrase").value;
-    var phrase = document.getElementById("phrase").value;
-    if(secretPhrase != null && secretPhrase.trim() != "" && phrase != null && phrase.trim() != "" && secretPhrase == phrase){
-      correct =correct + 1;
-      alert("Access Allowed");
-    }else{
-        wrong = wrong + 1;
-        alert("Access Denied");  }
-     var out = document.getElementById("result");
-    out.innerHTML = "Correct: " + correct + "<br>" + "Wrong: " + wrong;}
+<br>
+
+
+<script>
+    count=0;
+
+    correct = 0;
+        wrong = 0;
+    function processPhrase() {
+        console.log("Checking the Guess......")
+        secret_Word = document.getElementById("form1_secret_word").value
+        guess_word = document.getElementById("form1_guess_word").value
+        confirm_guess = confirm("Is this guess word? " + guess_word)
+        result = document.getElementById("result")
+        if(count<3)
+        {
+        if (confirm_guess) {
+            if (secret_Word.localeCompare(guess_word) == 0) {
+                alert("Access Allowed.")
+                correct = correct + 1
+                result.innerHTML = "Correct guess Count: " + correct + "<br>" +"Wrong guess Count: " + wrong
+            }
+            else
+            {
+                alert("Access Denied")
+                wrong = wrong + 1
+                result.innerHTML = "Correct guess Count: " + correct + "<br>" +"Wrong guess Count: " + wrong
+                count++;
+            }
+            
+        } else {
+            alert("Please Phrase the word again.!!!")
+        }
+    }
+    else{
+        alert("Account locked")
+    }
+    }
 var usingImage = 1;
 function newImage() {
     switch (usingImage) {
