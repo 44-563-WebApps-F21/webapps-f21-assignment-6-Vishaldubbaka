@@ -44,41 +44,26 @@
       <p id="mathResult"></p>
     </form>
     
-    <script> 
-    
-        function powers(){
-    
-            var baseValue = document.getElementById("baseValue").value;
+<script> 
+    function powers(){
+    var baseValue = document.getElementById("baseValue").value;
             var exponentValue = document.getElementById("exponentValue").value;
             var result ="";
-            
             result = "powers of "+ baseValue+" are: ";
-            
-    
             for (let i = 1; i <= exponentValue; i++) {
                     result = result + Math.pow(baseValue,i)+" ";
             }
-    
-            document.getElementById("result").innerHTML = result;
-    
-        }
-        
- function processRadio(){
-    
+    document.getElementById("result").innerHTML = result;
+    }
+        function processRadio(){
     var baseValue = document.getElementById("baseValue").value;
     var exponentValue = document.getElementById("exponentValue").value;
-
-    
     var mathOperations = document.getElementsByName('mathOperations');
     var operator="";
     let out=document.getElementById("mathResult");
-
-    for (var i = 0, length = mathOperations.length; i < length; i++) {
-    
-        if (mathOperations[i].checked) {
-
-            operator = mathOperations[i].value;
-            
+for (var i = 0, length = mathOperations.length; i < length; i++) {
+    if (mathOperations[i].checked) {
+operator = mathOperations[i].value;
             if(operator =="+"){
                 out.innerHTML = parseFloat(baseValue)+parseFloat(exponentValue);
             }else if(operator == "-"){
@@ -92,11 +77,7 @@
             break;
         }
     }
-
-
 }
-
-    
 </script>
 
 </body>
