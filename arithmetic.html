@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> arithmetic </title>
+</head>
+
+<body>
+
+<h2>Vishal Reddy Dubbaka computes</h2>
+
+<form>
+    <label for="baseValue">Enter a base</label>
+    <input type ="number" id="baseValue" name="baseValue" value=10> <br>
+
+    <label for="exponentValue">Enter a exponent</label>
+    <input type ="number" id="exponentValue" name="exponentValue" value=2> <br>
+
+    <input type="button" onclick="powers()" value="Compute">
+
+    <p id="result"></p>
+
+    </form>
+    
+    <script> 
+    
+        function powers(){
+    
+            var baseValue = document.getElementById("baseValue").value;
+            var exponentValue = document.getElementById("exponentValue").value;
+            var result ="";
+            
+            result = "powers of "+ baseValue+" are: ";
+            
+    
+            for (let i = 1; i <= exponentValue; i++) {
+                    result = result + Math.pow(baseValue,i)+" ";
+            }
+    
+            document.getElementById("result").innerHTML = result;
+    
+        }
+    
+</script>
+
+</body>
+</html> 

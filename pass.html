@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>
+     Java Script</title>
+    </head>
+<body>
+
+<h2>Pass phrase by Vishal Reddy Dubbaka</h2>
+
+<h2>Getting input</h2>
+<form id="phraseCheckForm">
+    <div style="margin:10px;">
+    <label for="secret_phrase">Enter the secret phrase</label>
+    <input type ="password" id="secret_phrase" name="secret_phrase" value="Let me in">
+</div>
+<div style="margin:10px;">
+    <label for="phrase">Enter a phrase</label>
+    <input type ="text" id="phrase" name="phrase"/>
+</div>
+<div style="margin:10px;">
+    <input type="button" id="btnProcessPhrase" onclick="processPhrase()" value="Check the phrase"/>
+</div>
+</form>
+
+
+<p id="result" style="margin:10px;"></p>
+
+<div class="container">
+    <img id="picture" width="200" height="200" src="kangaroo.PNG" alt="The image of the kangaroo" onclick="newImage()">
+</div>
+<script> 
+ correct = 0;
+ wrong = 0;
+function processPhrase (){
+    console.log("Getting form values")
+    var secretPhrase = document.getElementById("secret_phrase").value;
+    var phrase = document.getElementById("phrase").value;
+    if(secretPhrase != null && secretPhrase.trim() != "" && phrase != null && phrase.trim() != "" && secretPhrase == phrase){
+      correct =correct + 1;
+      alert("Access Allowed");
+    }else{
+        wrong = wrong + 1;
+        alert("Access Denied");  }
+     var out = document.getElementById("result");
+    out.innerHTML = "Correct: " + correct + "<br>" + "Wrong: " + wrong;}
+var usingImage = 1;
+function newImage() {
+    switch (usingImage) {
+        case 1:
+            document.getElementById("picture").src = "kangaroo.PNG"
+            usingImage = 2
+            break
+        case 2:
+            document.getElementById("picture").src = "deer.PNG"
+            usingImage = 3
+            break
+        case 3:
+            document.getElementById("picture").src = "Baboon.PNG"
+            usingImage = 1
+            break
+    }
+}
+</script>
+
+
+</body>
+</html> 
